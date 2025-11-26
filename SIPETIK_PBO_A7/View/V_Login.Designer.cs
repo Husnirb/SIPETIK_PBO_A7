@@ -28,68 +28,75 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Login));
             tbemail = new TextBox();
             tbpassword = new TextBox();
             btnlogin = new Button();
-            btnregister = new Button();
+            lblregister = new Label();
             SuspendLayout();
             // 
             // tbemail
             // 
             tbemail.BorderStyle = BorderStyle.None;
-            tbemail.Location = new Point(840, 356);
+            tbemail.Location = new Point(837, 350);
+            tbemail.Margin = new Padding(3, 4, 3, 4);
             tbemail.Name = "tbemail";
-            tbemail.Size = new Size(242, 16);
+            tbemail.Size = new Size(248, 20);
             tbemail.TabIndex = 0;
             // 
             // tbpassword
             // 
             tbpassword.BorderStyle = BorderStyle.None;
-            tbpassword.Location = new Point(840, 453);
+            tbpassword.Location = new Point(837, 444);
+            tbpassword.Margin = new Padding(3, 4, 3, 4);
             tbpassword.Name = "tbpassword";
-            tbpassword.Size = new Size(242, 16);
+            tbpassword.Size = new Size(248, 20);
             tbpassword.TabIndex = 1;
             // 
             // btnlogin
             // 
             btnlogin.AutoSize = true;
-            btnlogin.BackColor = Color.Transparent;
+            btnlogin.BackColor = Color.LightCoral;
+            btnlogin.BackgroundImage = Properties.Resources.LoginButton1;
+            btnlogin.BackgroundImageLayout = ImageLayout.Stretch;
             btnlogin.FlatAppearance.BorderSize = 0;
             btnlogin.FlatStyle = FlatStyle.Flat;
             btnlogin.ForeColor = Color.Transparent;
-            btnlogin.Location = new Point(894, 524);
+            btnlogin.Location = new Point(881, 519);
+            btnlogin.Margin = new Padding(3, 4, 3, 4);
             btnlogin.Name = "btnlogin";
-            btnlogin.Size = new Size(146, 43);
+            btnlogin.Size = new Size(149, 41);
             btnlogin.TabIndex = 2;
             btnlogin.UseVisualStyleBackColor = false;
+            btnlogin.Click += btnlogin_Click;
             // 
-            // btnregister
+            // lblregister
             // 
-            btnregister.AutoSize = true;
-            btnregister.BackColor = Color.Transparent;
-            btnregister.FlatAppearance.BorderSize = 0;
-            btnregister.FlatStyle = FlatStyle.Flat;
-            btnregister.ForeColor = Color.Transparent;
-            btnregister.Location = new Point(1009, 626);
-            btnregister.Name = "btnregister";
-            btnregister.Size = new Size(97, 43);
-            btnregister.TabIndex = 3;
-            btnregister.UseVisualStyleBackColor = false;
+            lblregister.AutoSize = true;
+            lblregister.BackColor = Color.Transparent;
+            lblregister.Font = new Font("Poppins", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblregister.ForeColor = Color.Maroon;
+            lblregister.Location = new Point(997, 619);
+            lblregister.Name = "lblregister";
+            lblregister.Size = new Size(100, 36);
+            lblregister.TabIndex = 4;
+            lblregister.Text = "Register";
+            lblregister.Click += lblregister_Click;
             // 
             // V_Login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImage = Properties.Resources.LoginPage1;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1264, 681);
-            Controls.Add(btnregister);
+            ClientSize = new Size(1262, 673);
+            Controls.Add(lblregister);
             Controls.Add(btnlogin);
             Controls.Add(tbpassword);
             Controls.Add(tbemail);
             DoubleBuffered = true;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "V_Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += V_Login_Load;
             ResumeLayout(false);
@@ -101,6 +108,6 @@
         private TextBox tbemail;
         private TextBox tbpassword;
         private Button btnlogin;
-        private Button btnregister;
+        private Label lblregister;
     }
 }

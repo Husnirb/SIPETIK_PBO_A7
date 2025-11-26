@@ -32,69 +32,79 @@
             tbnama = new TextBox();
             tbemail = new TextBox();
             tbpassword = new TextBox();
-            tbnotelp = new TextBox();
+            tbtelp = new TextBox();
             btndaftar = new Button();
             SuspendLayout();
             // 
             // tbnama
             // 
             tbnama.BorderStyle = BorderStyle.None;
-            tbnama.Location = new Point(861, 262);
+            tbnama.Location = new Point(862, 257);
+            tbnama.Margin = new Padding(3, 4, 3, 4);
             tbnama.Name = "tbnama";
-            tbnama.Size = new Size(242, 16);
+            tbnama.Size = new Size(244, 20);
             tbnama.TabIndex = 1;
             // 
             // tbemail
             // 
             tbemail.BorderStyle = BorderStyle.None;
-            tbemail.Location = new Point(861, 332);
+            tbemail.Location = new Point(862, 326);
+            tbemail.Margin = new Padding(3, 4, 3, 4);
             tbemail.Name = "tbemail";
-            tbemail.Size = new Size(242, 16);
+            tbemail.Size = new Size(244, 20);
             tbemail.TabIndex = 2;
             // 
             // tbpassword
             // 
             tbpassword.BorderStyle = BorderStyle.None;
-            tbpassword.Location = new Point(861, 407);
+            tbpassword.Location = new Point(862, 398);
+            tbpassword.Margin = new Padding(3, 4, 3, 4);
             tbpassword.Name = "tbpassword";
-            tbpassword.Size = new Size(242, 16);
+            tbpassword.Size = new Size(244, 20);
             tbpassword.TabIndex = 3;
             // 
-            // tbnotelp
+            // tbtelp
             // 
-            tbnotelp.BorderStyle = BorderStyle.None;
-            tbnotelp.Location = new Point(861, 474);
-            tbnotelp.Name = "tbnotelp";
-            tbnotelp.Size = new Size(242, 16);
-            tbnotelp.TabIndex = 4;
+            tbtelp.BorderStyle = BorderStyle.None;
+            tbtelp.Location = new Point(862, 468);
+            tbtelp.Margin = new Padding(3, 4, 3, 4);
+            tbtelp.Name = "tbtelp";
+            tbtelp.Size = new Size(244, 20);
+            tbtelp.TabIndex = 4;
             // 
             // btndaftar
             // 
             btndaftar.AutoSize = true;
-            btndaftar.BackColor = Color.Transparent;
+            btndaftar.BackColor = Color.LightCoral;
+            btndaftar.BackgroundImage = Properties.Resources.RegisterButton;
+            btndaftar.BackgroundImageLayout = ImageLayout.Stretch;
             btndaftar.FlatAppearance.BorderSize = 0;
             btndaftar.FlatStyle = FlatStyle.Flat;
             btndaftar.ForeColor = Color.Transparent;
-            btndaftar.Location = new Point(897, 547);
+            btndaftar.Location = new Point(894, 541);
+            btndaftar.Margin = new Padding(3, 4, 3, 4);
             btndaftar.Name = "btndaftar";
-            btndaftar.Size = new Size(146, 43);
+            btndaftar.Size = new Size(150, 43);
             btndaftar.TabIndex = 5;
             btndaftar.UseVisualStyleBackColor = false;
+            btndaftar.Click += btndaftar_Click;
             // 
             // V_Register
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1264, 681);
+            ClientSize = new Size(1262, 673);
             Controls.Add(btndaftar);
-            Controls.Add(tbnotelp);
+            Controls.Add(tbtelp);
             Controls.Add(tbpassword);
             Controls.Add(tbemail);
             Controls.Add(tbnama);
             DoubleBuffered = true;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "V_Register";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Register";
             ResumeLayout(false);
             PerformLayout();
@@ -105,7 +115,7 @@
         private TextBox tbnama;
         private TextBox tbemail;
         private TextBox tbpassword;
-        private TextBox tbnotelp;
+        private TextBox tbtelp;
         private Button btndaftar;
     }
 }
