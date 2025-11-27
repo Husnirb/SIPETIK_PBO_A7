@@ -3,6 +3,7 @@ using SIPETIK_PBO_A7.Controllers;
 using SIPETIK_PBO_A7.Database;
 using SIPETIK_PBO_A7.Helper;
 using SIPETIK_PBO_A7.View;
+using SIPETIK_PBO_A7.Models;
 
 namespace SIPETIK_PBO_A7
 {
@@ -23,15 +24,23 @@ namespace SIPETIK_PBO_A7
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            var res = uc.login(tbemail.Text.Trim(), tbpassword.Text);
-
-            if (res.sukses)
+            // Create a User object with the entered email and password
+            User user = new User
             {
-                MessageBox.Show($"login berhasil. halo, {res.nama}!");
+                Email = tbemail.Text.Trim(),
+                Password = tbpassword.Text
+            };
+
+            // Call the Login method on usercontroller
+            var res = uc.Login(user);
+
+            if (res != null)
+            {
+                MessageBox.Show($"login berhasil. halo, {res.Nama}!");
             }
             else
             {
-                MessageBox.Show(res.pesan);
+                MessageBox.Show("Login gagal. Silakan periksa email dan password Anda.");
             }
         }
 

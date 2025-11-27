@@ -1,4 +1,5 @@
 ﻿using DotNetEnv;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,17 @@ namespace SIPETIK_PBO_A7.Database
 {
     public class DbContext
     {
-        public string? connStr;
+        public string ConnStr;
 
         public DbContext()
         {
             Env.Load();
-            connStr = Environment.GetEnvironmentVariable("CONN_STR");
+            ConnStr = Environment.GetEnvironmentVariable("CONN_STR");
+        }
+
+        public NpgsqlConnection GetConnection()
+        {
+            return new NpgsqlConnection(ConnStr);
         }
     }
 }

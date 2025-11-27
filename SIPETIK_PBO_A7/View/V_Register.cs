@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SIPETIK_PBO_A7.Models;
 
 namespace SIPETIK_PBO_A7.View
 {
@@ -25,14 +26,16 @@ namespace SIPETIK_PBO_A7.View
 
         private void btndaftar_Click(object sender, EventArgs e)
         {
-            string hasil = uc.register(
-                tbnama.Text.Trim(),
-                tbemail.Text.Trim(),
-                tbpassword.Text,
-                tbtelp.Text.Trim()
-            );
+            var user = new User
+            {
+                Nama = tbnama.Text.Trim(),
+                Email = tbemail.Text.Trim(),
+                Password = tbpassword.Text,
+            };
 
-            if (hasil == "ok")
+            bool hasil = uc.Register(user);
+
+            if (hasil)
             {
                 MessageBox.Show("register berhasil! silakan login.");
                 V_Login log = new V_Login();
@@ -41,7 +44,7 @@ namespace SIPETIK_PBO_A7.View
             }
             else
             {
-                MessageBox.Show(hasil);
+                MessageBox.Show("Register gagal. Silakan coba lagi.");
             }
         }
     }

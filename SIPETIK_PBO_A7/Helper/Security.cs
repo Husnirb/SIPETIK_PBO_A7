@@ -9,14 +9,13 @@ namespace SIPETIK_PBO_A7.Helper
 {
     public class Security
     {
-        public static string HashPassword(string pass)
+        public static string HashPassword(string password)
         {
-            using (SHA256 sha = SHA256.Create())
+            using (var sha = SHA256.Create())
             {
-                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(pass));
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in bytes) sb.Append(b.ToString("x2"));
-                return sb.ToString();
+                var bytes = Encoding.UTF8.GetBytes(password);
+                var hash = sha.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
             }
         }
     }
