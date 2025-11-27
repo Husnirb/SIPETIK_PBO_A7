@@ -73,11 +73,11 @@
             // 
             lblregister.AutoSize = true;
             lblregister.BackColor = Color.Transparent;
-            lblregister.Font = new Font("Poppins", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblregister.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lblregister.ForeColor = Color.Maroon;
-            lblregister.Location = new Point(997, 619);
+            lblregister.Location = new Point(1001, 623);
             lblregister.Name = "lblregister";
-            lblregister.Size = new Size(100, 36);
+            lblregister.Size = new Size(91, 25);
             lblregister.TabIndex = 4;
             lblregister.Text = "Register";
             lblregister.Click += lblregister_Click;

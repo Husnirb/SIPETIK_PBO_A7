@@ -12,7 +12,6 @@ namespace SIPETIK_PBO_A7.Models
         public string Nama { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public bool Is_Admin { get; set; }
         public bool IsAdmin { get; set; }
     }
 }

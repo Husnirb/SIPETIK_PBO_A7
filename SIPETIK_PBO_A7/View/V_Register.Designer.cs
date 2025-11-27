@@ -32,7 +32,6 @@
             tbnama = new TextBox();
             tbemail = new TextBox();
             tbpassword = new TextBox();
-            tbtelp = new TextBox();
             btndaftar = new Button();
             SuspendLayout();
             // 
@@ -63,15 +62,6 @@
             tbpassword.Size = new Size(244, 20);
             tbpassword.TabIndex = 3;
             // 
-            // tbtelp
-            // 
-            tbtelp.BorderStyle = BorderStyle.None;
-            tbtelp.Location = new Point(862, 468);
-            tbtelp.Margin = new Padding(3, 4, 3, 4);
-            tbtelp.Name = "tbtelp";
-            tbtelp.Size = new Size(244, 20);
-            tbtelp.TabIndex = 4;
-            // 
             // btndaftar
             // 
             btndaftar.AutoSize = true;
@@ -81,10 +71,10 @@
             btndaftar.FlatAppearance.BorderSize = 0;
             btndaftar.FlatStyle = FlatStyle.Flat;
             btndaftar.ForeColor = Color.Transparent;
-            btndaftar.Location = new Point(894, 541);
+            btndaftar.Location = new Point(894, 538);
             btndaftar.Margin = new Padding(3, 4, 3, 4);
             btndaftar.Name = "btndaftar";
-            btndaftar.Size = new Size(150, 43);
+            btndaftar.Size = new Size(174, 43);
             btndaftar.TabIndex = 5;
             btndaftar.UseVisualStyleBackColor = false;
             btndaftar.Click += btndaftar_Click;
@@ -97,7 +87,6 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1262, 673);
             Controls.Add(btndaftar);
-            Controls.Add(tbtelp);
             Controls.Add(tbpassword);
             Controls.Add(tbemail);
             Controls.Add(tbnama);
@@ -115,7 +104,6 @@
         private TextBox tbnama;
         private TextBox tbemail;
         private TextBox tbpassword;
-        private TextBox tbtelp;
         private Button btndaftar;
     }
 }
