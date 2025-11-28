@@ -36,6 +36,7 @@ namespace SIPETIK_PBO_A7
             if (res != null)
             {
                 MessageBox.Show($"login berhasil. halo, {res.Nama}!");
+                //UserSession.Instance.SetUser(res);
                 V_Beranda beranda = new V_Beranda(res);
                 beranda.FormClosed += (s, args) => this.Close();
                 this.Hide();

@@ -86,6 +86,50 @@ namespace SIPETIK_PBO_A7.Controllers
                 return false;
             }
         }
+
+        public User GetProfile(int userId)
+        {
+            string query = "SELECT user_id, nama, email, password, is_admin FROM users WHERE user_id = @id";
+            User user = null;
+
+            try
+            {
+                using (var conn = new NpgsqlConnection(dbcontext.ConnStr))
+                {
+                    conn.Open();
+
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", userId);
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                var loggedInUser = new User
+                                {
+                                    UserId = reader.GetInt32(reader.GetOrdinal("user_id")),
+                                    Nama = reader.GetString(reader.GetOrdinal("nama")),
+                                    Email = reader.GetString(reader.GetOrdinal("email")),
+                                    IsAdmin = reader.GetBoolean(reader.GetOrdinal("is_admin")),
+                                    Password = reader.GetString(reader.GetOrdinal("password"))
+                                };
+
+                                return loggedInUser;
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"PROFILE ERROR: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+            return user;
+        }
     }
 }
 

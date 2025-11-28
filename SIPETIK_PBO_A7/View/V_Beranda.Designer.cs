@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Beranda));
             btnpesantiket = new Button();
+            klikprofil = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)klikprofil).BeginInit();
             SuspendLayout();
             // 
             // btnpesantiket
@@ -49,6 +51,17 @@
             btnpesantiket.UseVisualStyleBackColor = false;
             btnpesantiket.Click += btnpesantiket_Click;
             // 
+            // klikprofil
+            // 
+            klikprofil.BackColor = Color.Transparent;
+            klikprofil.Cursor = Cursors.Hand;
+            klikprofil.Location = new Point(1155, 24);
+            klikprofil.Name = "klikprofil";
+            klikprofil.Size = new Size(63, 58);
+            klikprofil.TabIndex = 7;
+            klikprofil.TabStop = false;
+            klikprofil.Click += klikprofil_Click;
+            // 
             // V_Beranda
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -56,11 +69,13 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1262, 673);
+            Controls.Add(klikprofil);
             Controls.Add(btnpesantiket);
             DoubleBuffered = true;
             Name = "V_Beranda";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Beranda";
+            ((System.ComponentModel.ISupportInitialize)klikprofil).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -68,5 +83,6 @@
         #endregion
 
         private Button btnpesantiket;
+        private PictureBox klikprofil;
     }
 }
