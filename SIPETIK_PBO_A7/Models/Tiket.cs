@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIPETIK_PBO_A7.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,14 @@ namespace SIPETIK_PBO_A7.Models
         public int Harga { get; set; }
         public int Stok { get; set; }
 
+        public Tiket() { }
 
+        public Tiket(int id, string nama, int harga, int jumlah)
+        {
+            TiketId = id;
+            NamaTiket = nama;
+            Harga = harga;
+            Stok = jumlah;
+        }
     }
 }

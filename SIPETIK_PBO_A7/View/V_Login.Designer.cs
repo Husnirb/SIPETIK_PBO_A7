@@ -37,6 +37,7 @@
             // tbemail
             // 
             tbemail.BorderStyle = BorderStyle.None;
+            tbemail.Cursor = Cursors.IBeam;
             tbemail.Location = new Point(837, 350);
             tbemail.Margin = new Padding(3, 4, 3, 4);
             tbemail.Name = "tbemail";
@@ -46,6 +47,7 @@
             // tbpassword
             // 
             tbpassword.BorderStyle = BorderStyle.None;
+            tbpassword.Cursor = Cursors.IBeam;
             tbpassword.Location = new Point(837, 444);
             tbpassword.Margin = new Padding(3, 4, 3, 4);
             tbpassword.Name = "tbpassword";
@@ -58,6 +60,7 @@
             btnlogin.BackColor = Color.LightCoral;
             btnlogin.BackgroundImage = Properties.Resources.LoginButton1;
             btnlogin.BackgroundImageLayout = ImageLayout.Stretch;
+            btnlogin.Cursor = Cursors.Hand;
             btnlogin.FlatAppearance.BorderSize = 0;
             btnlogin.FlatStyle = FlatStyle.Flat;
             btnlogin.ForeColor = Color.Transparent;
@@ -73,6 +76,7 @@
             // 
             lblregister.AutoSize = true;
             lblregister.BackColor = Color.Transparent;
+            lblregister.Cursor = Cursors.Hand;
             lblregister.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lblregister.ForeColor = Color.Maroon;
             lblregister.Location = new Point(1001, 623);

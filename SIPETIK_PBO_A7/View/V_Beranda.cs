@@ -33,7 +33,6 @@ namespace SIPETIK_PBO_A7.View
 
         private void klikprofil_Click(object sender, EventArgs e)
         {
-
             if (_user == null)
             {
                 MessageBox.Show("User belum login!");
@@ -43,6 +42,14 @@ namespace SIPETIK_PBO_A7.View
             V_Profil vp = new V_Profil(_user);
             vp.Show();
             this.Hide();
+        }
+
+        private void klikTiket_Click(object sender, EventArgs e)
+        {
+            V_Tiket tiket = new V_Tiket(_user);
+            tiket.FormClosed += (s, args) => this.Close();
+            this.Hide();
+            tiket.Show();
         }
     }
 }

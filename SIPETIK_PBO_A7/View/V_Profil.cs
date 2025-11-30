@@ -35,19 +35,25 @@ namespace SIPETIK_PBO_A7.View
 
             nama1.Text = _user.Nama;
             nama2.Text = _user.Nama;
-            nama3.Text = _user.Nama;
             id_akun.Text = _user.UserId.ToString();
             email.Text = _user.Email;
-            password.Text = _user.Password;
         }
 
 
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void klikBeranda_Click(object sender, EventArgs e)
         {
             this.Close();
             V_Beranda v_Beranda = new V_Beranda(_user);
             v_Beranda.Show();
+        }
+
+        private void klikTiket_Click(object sender, EventArgs e)
+        {
+            V_Tiket tiket = new V_Tiket(_user);
+            tiket.FormClosed += (s, args) => this.Close();
+            this.Hide();
+            tiket.Show();
         }
     }
 }
