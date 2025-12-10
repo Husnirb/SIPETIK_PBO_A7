@@ -2,13 +2,6 @@
 using SIPETIK_PBO_A7.Helper;
 using SIPETIK_PBO_A7.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SIPETIK_PBO_A7.View
@@ -21,14 +14,12 @@ namespace SIPETIK_PBO_A7.View
         {
             InitializeComponent();
             _user = user;
-        }
 
-        private void btnpesantiket_Click(object sender, EventArgs e)
-        {
-            V_Tiket tiket = new V_Tiket(_user);
-            tiket.FormClosed += (s, args) => this.Close();
-            this.Hide();
-            tiket.Show();
+            if (_user != null && _user.IsAdmin)
+            {
+                btnpesantiket.Visible = false;
+                btnpesantiket.Enabled = false;
+            }
         }
 
         private void klikprofil_Click(object sender, EventArgs e)
@@ -46,6 +37,34 @@ namespace SIPETIK_PBO_A7.View
 
         private void klikTiket_Click(object sender, EventArgs e)
         {
+            V_Tiket tiket = new V_Tiket(_user);
+            tiket.FormClosed += (s, args) => this.Close();
+            this.Hide();
+            tiket.Show();
+        }
+
+        private void klikTransaksi_Click(object sender, EventArgs e)
+        {
+            var vt = new V_Transaksi();
+            vt.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            vt.Show();
+        }
+
+        private void btnpesantiket_Click(object sender, EventArgs e)
+        {
+            if (_user == null)
+            {
+                MessageBox.Show("User belum login!");
+                return;
+            }
+
+            if (_user.IsAdmin)
+            {
+                MessageBox.Show("Admin tidak dapat memesan tiket.");
+                return;
+            }
+
             V_Tiket tiket = new V_Tiket(_user);
             tiket.FormClosed += (s, args) => this.Close();
             this.Hide();

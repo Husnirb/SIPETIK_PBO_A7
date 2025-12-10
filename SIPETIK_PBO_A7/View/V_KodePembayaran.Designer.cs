@@ -96,6 +96,7 @@
             Controls.Add(klikBeranda);
             DoubleBuffered = true;
             Name = "V_KodePembayaran";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "V_KodePembayaran";
             Load += V_KodePembayaran_Load;
             ((System.ComponentModel.ISupportInitialize)klikBeranda).EndInit();

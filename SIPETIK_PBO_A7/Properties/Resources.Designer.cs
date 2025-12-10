@@ -73,6 +73,26 @@ namespace SIPETIK_PBO_A7.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap detail_trans {
+            get {
+                object obj = ResourceManager.GetObject("detail trans", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jumlah {
+            get {
+                object obj = ResourceManager.GetObject("jumlah", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Login {
             get {
                 object obj = ResourceManager.GetObject("Login", resourceCulture);
@@ -133,6 +153,16 @@ namespace SIPETIK_PBO_A7.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pesantiketskrgV2 {
+            get {
+                object obj = ResourceManager.GetObject("pesantiketskrgV2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RegisterButton {
             get {
                 object obj = ResourceManager.GetObject("RegisterButton", resourceCulture);
@@ -156,6 +186,26 @@ namespace SIPETIK_PBO_A7.Properties {
         internal static System.Drawing.Bitmap RegisterLeave {
             get {
                 object obj = ResourceManager.GetObject("RegisterLeave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TRANS {
+            get {
+                object obj = ResourceManager.GetObject("TRANS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ubah {
+            get {
+                object obj = ResourceManager.GetObject("ubah", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

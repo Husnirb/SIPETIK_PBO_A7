@@ -29,32 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_Beranda));
-            btnpesantiket = new Button();
             klikprofil = new PictureBox();
             klikTiket = new PictureBox();
-            pictureBox2 = new PictureBox();
+            klikTransaksi = new PictureBox();
+            btnpesantiket = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)klikprofil).BeginInit();
             ((System.ComponentModel.ISupportInitialize)klikTiket).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)klikTransaksi).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnpesantiket).BeginInit();
             SuspendLayout();
-            // 
-            // btnpesantiket
-            // 
-            btnpesantiket.AutoSize = true;
-            btnpesantiket.BackColor = Color.Transparent;
-            btnpesantiket.BackgroundImage = Properties.Resources.pesantiketskrg;
-            btnpesantiket.BackgroundImageLayout = ImageLayout.Stretch;
-            btnpesantiket.Cursor = Cursors.Hand;
-            btnpesantiket.FlatAppearance.BorderSize = 0;
-            btnpesantiket.FlatStyle = FlatStyle.Flat;
-            btnpesantiket.ForeColor = Color.Transparent;
-            btnpesantiket.Location = new Point(515, 458);
-            btnpesantiket.Margin = new Padding(3, 4, 3, 4);
-            btnpesantiket.Name = "btnpesantiket";
-            btnpesantiket.Size = new Size(242, 52);
-            btnpesantiket.TabIndex = 6;
-            btnpesantiket.UseVisualStyleBackColor = false;
-            btnpesantiket.Click += btnpesantiket_Click;
             // 
             // klikprofil
             // 
@@ -71,22 +54,36 @@
             // 
             klikTiket.BackColor = Color.Transparent;
             klikTiket.Cursor = Cursors.Hand;
-            klikTiket.Location = new Point(759, 27);
+            klikTiket.Location = new Point(766, 27);
             klikTiket.Name = "klikTiket";
-            klikTiket.Size = new Size(135, 51);
+            klikTiket.Size = new Size(126, 51);
             klikTiket.TabIndex = 8;
             klikTiket.TabStop = false;
             klikTiket.Click += klikTiket_Click;
             // 
-            // pictureBox2
+            // klikTransaksi
             // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Cursor = Cursors.Hand;
-            pictureBox2.Location = new Point(924, 27);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(138, 51);
-            pictureBox2.TabIndex = 9;
-            pictureBox2.TabStop = false;
+            klikTransaksi.BackColor = Color.Transparent;
+            klikTransaksi.Cursor = Cursors.Hand;
+            klikTransaksi.Location = new Point(924, 27);
+            klikTransaksi.Name = "klikTransaksi";
+            klikTransaksi.Size = new Size(138, 51);
+            klikTransaksi.TabIndex = 9;
+            klikTransaksi.TabStop = false;
+            klikTransaksi.Click += klikTransaksi_Click;
+            // 
+            // btnpesantiket
+            // 
+            btnpesantiket.BackColor = Color.Transparent;
+            btnpesantiket.BackgroundImage = Properties.Resources.pesantiketskrg;
+            btnpesantiket.BackgroundImageLayout = ImageLayout.Stretch;
+            btnpesantiket.Cursor = Cursors.Hand;
+            btnpesantiket.Location = new Point(514, 458);
+            btnpesantiket.Name = "btnpesantiket";
+            btnpesantiket.Size = new Size(248, 51);
+            btnpesantiket.TabIndex = 10;
+            btnpesantiket.TabStop = false;
+            btnpesantiket.Click += btnpesantiket_Click;
             // 
             // V_Beranda
             // 
@@ -95,26 +92,27 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1262, 673);
-            Controls.Add(pictureBox2);
+            Controls.Add(btnpesantiket);
+            Controls.Add(klikTransaksi);
             Controls.Add(klikTiket);
             Controls.Add(klikprofil);
-            Controls.Add(btnpesantiket);
             DoubleBuffered = true;
             Name = "V_Beranda";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Beranda";
             ((System.ComponentModel.ISupportInitialize)klikprofil).EndInit();
             ((System.ComponentModel.ISupportInitialize)klikTiket).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)klikTransaksi).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnpesantiket).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Button btnpesantiket;
         private PictureBox klikprofil;
         private PictureBox klikTiket;
         private PictureBox pictureBox2;
+        private PictureBox klikTransaksi;
+        private PictureBox btnpesantiket;
     }
 }

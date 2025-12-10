@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using SIPETIK_PBO_A7.Models;
 using SIPETIK_PBO_A7.Controllers;
+using SIPETIK_PBO_A7.Helper;
 
 namespace SIPETIK_PBO_A7.View
 {
@@ -16,15 +17,32 @@ namespace SIPETIK_PBO_A7.View
         {
             InitializeComponent();
             _user = user;
+
             tiketcontroller = new TiketController();
             transaksicontroller = new TransaksiController();
+
+            CekAdmin();
         }
 
         public V_Tiket()
         {
             InitializeComponent();
+
             tiketcontroller = new TiketController();
             transaksicontroller = new TransaksiController();
+
+            _user = UserSession.Instance.CurrentUser;
+            CekAdmin();
+        }
+
+        private void CekAdmin()
+        {
+            if (_user != null && _user.IsAdmin)
+            {
+                klikPesanTiket.Visible = false;
+                klikJumlah.Visible = false;
+                pbjumlah.Visible = false;
+            }
         }
 
         private void V_Tiket_Load(object sender, EventArgs e)
@@ -40,21 +58,19 @@ namespace SIPETIK_PBO_A7.View
 
             klikJumlah.Minimum = 1;
             klikJumlah.Maximum = tiket.Stok;
-            klikJumlah.Value = 1;
+            klikJumlah.Value = tiket.Stok > 0 ? 1 : 0;
+
+            if (tiket.Stok == 0)
+                klikPesanTiket.Enabled = false;
         }
 
         private void klikJumlah_ValueChanged(object sender, EventArgs e)
         {
-            if (tiket == null) return;
+            if (tiket == null)
+                return;
 
-            int qty = (int)klikJumlah.Value;
-
-            if (qty > tiket.Stok)
-            {
+            if (klikJumlah.Value > tiket.Stok)
                 klikJumlah.Value = tiket.Stok;
-                qty = tiket.Stok;
-            }
-
         }
 
         private void klikPesanTiket_Click(object sender, EventArgs e)
@@ -62,6 +78,12 @@ namespace SIPETIK_PBO_A7.View
             if (_user == null)
             {
                 MessageBox.Show("User belum login!");
+                return;
+            }
+
+            if (_user.IsAdmin)
+            {
+                MessageBox.Show("Admin tidak dapat memesan tiket.");
                 return;
             }
 
@@ -111,6 +133,14 @@ namespace SIPETIK_PBO_A7.View
             V_Profil vp = new V_Profil(_user);
             vp.Show();
             this.Hide();
+        }
+
+        private void klikTransaksi_Click(object sender, EventArgs e)
+        {
+            var vt = new V_Transaksi();
+            vt.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            vt.Show();
         }
     }
 }

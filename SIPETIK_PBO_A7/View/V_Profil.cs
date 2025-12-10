@@ -55,5 +55,43 @@ namespace SIPETIK_PBO_A7.View
             this.Hide();
             tiket.Show();
         }
+
+        private void kliklogout_Click(object sender, EventArgs e)
+        {
+            AppState.IsLoggingOut = true;
+            UserSession.Instance.Clear();
+
+            V_Login login = new V_Login();
+            login.Show();
+            this.Hide();
+        }
+
+        private void klikTransaksi_Click(object sender, EventArgs e)
+        {
+            var vt = new V_Transaksi();
+            vt.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            vt.Show();
+        }
+
+        private void klikEdit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            V_EditProfil edit = new V_EditProfil(_user);
+            var result = edit.ShowDialog();
+            this.Show();
+
+            if (result == DialogResult.OK)
+            {
+                _user = controller.GetUserById(_user.UserId);
+
+                nama1.Text = _user.Nama;
+                nama2.Text = _user.Nama;
+                email.Text = _user.Email;
+
+                MessageBox.Show("Profil berhasil diperbarui!", "Sukses",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

@@ -33,10 +33,14 @@
             klikprofil = new PictureBox();
             klikPesanTiket = new PictureBox();
             klikJumlah = new NumericUpDown();
+            klikTransaksi = new PictureBox();
+            pbjumlah = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)klikBeranda).BeginInit();
             ((System.ComponentModel.ISupportInitialize)klikprofil).BeginInit();
             ((System.ComponentModel.ISupportInitialize)klikPesanTiket).BeginInit();
             ((System.ComponentModel.ISupportInitialize)klikJumlah).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)klikTransaksi).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbjumlah).BeginInit();
             SuspendLayout();
             // 
             // klikBeranda
@@ -64,6 +68,8 @@
             // klikPesanTiket
             // 
             klikPesanTiket.BackColor = Color.Transparent;
+            klikPesanTiket.BackgroundImage = Properties.Resources.pesantiketskrgV2;
+            klikPesanTiket.BackgroundImageLayout = ImageLayout.Stretch;
             klikPesanTiket.Cursor = Cursors.Hand;
             klikPesanTiket.Location = new Point(994, 596);
             klikPesanTiket.Name = "klikPesanTiket";
@@ -75,11 +81,34 @@
             // klikJumlah
             // 
             klikJumlah.Font = new Font("Segoe UI", 11.5F);
-            klikJumlah.Location = new Point(891, 605);
+            klikJumlah.Location = new Point(908, 606);
             klikJumlah.Name = "klikJumlah";
             klikJumlah.Size = new Size(57, 33);
             klikJumlah.TabIndex = 12;
             klikJumlah.ValueChanged += klikJumlah_ValueChanged;
+            // 
+            // klikTransaksi
+            // 
+            klikTransaksi.BackColor = Color.Transparent;
+            klikTransaksi.Cursor = Cursors.Hand;
+            klikTransaksi.Location = new Point(926, 27);
+            klikTransaksi.Name = "klikTransaksi";
+            klikTransaksi.Size = new Size(138, 51);
+            klikTransaksi.TabIndex = 13;
+            klikTransaksi.TabStop = false;
+            klikTransaksi.Click += klikTransaksi_Click;
+            // 
+            // pbjumlah
+            // 
+            pbjumlah.BackColor = Color.Transparent;
+            pbjumlah.BackgroundImage = Properties.Resources.jumlah;
+            pbjumlah.BackgroundImageLayout = ImageLayout.Stretch;
+            pbjumlah.Cursor = Cursors.Hand;
+            pbjumlah.Location = new Point(793, 596);
+            pbjumlah.Name = "pbjumlah";
+            pbjumlah.Size = new Size(109, 52);
+            pbjumlah.TabIndex = 14;
+            pbjumlah.TabStop = false;
             // 
             // V_Tiket
             // 
@@ -88,6 +117,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1262, 673);
+            Controls.Add(pbjumlah);
+            Controls.Add(klikTransaksi);
             Controls.Add(klikJumlah);
             Controls.Add(klikPesanTiket);
             Controls.Add(klikprofil);
@@ -100,6 +131,8 @@
             ((System.ComponentModel.ISupportInitialize)klikprofil).EndInit();
             ((System.ComponentModel.ISupportInitialize)klikPesanTiket).EndInit();
             ((System.ComponentModel.ISupportInitialize)klikJumlah).EndInit();
+            ((System.ComponentModel.ISupportInitialize)klikTransaksi).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbjumlah).EndInit();
             ResumeLayout(false);
         }
 
@@ -109,5 +142,7 @@
         private PictureBox klikprofil;
         private PictureBox klikPesanTiket;
         private NumericUpDown klikJumlah;
+        private PictureBox klikTransaksi;
+        private PictureBox pbjumlah;
     }
 }

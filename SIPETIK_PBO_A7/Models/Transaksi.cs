@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SIPETIK_PBO_A7.Models
+﻿namespace SIPETIK_PBO_A7.Models
 {
     public class Transaksi
     {
@@ -12,8 +6,9 @@ namespace SIPETIK_PBO_A7.Models
         public string StatusTransaksi { get; set; }
         public int Kuantitas { get; set; }
         public int TotalHarga { get; set; }
-        public DateTime TanggalTransaksi { get; set; }
+        public System.DateTime TanggalTransaksi { get; set; }
         public int TiketId { get; set; }
         public int UserId { get; set; }
+        public string NamaUser { get; set; }
     }
 }

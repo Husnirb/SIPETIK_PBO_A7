@@ -1,9 +1,8 @@
-using Npgsql;
 using SIPETIK_PBO_A7.Controllers;
-using SIPETIK_PBO_A7.Database;
 using SIPETIK_PBO_A7.Helper;
-using SIPETIK_PBO_A7.View;
 using SIPETIK_PBO_A7.Models;
+using System;
+using System.Windows.Forms;
 
 namespace SIPETIK_PBO_A7
 {
@@ -16,43 +15,70 @@ namespace SIPETIK_PBO_A7
             InitializeComponent();
         }
 
-        private void V_Login_Load(object sender, EventArgs e)
+        private bool ValidateLoginInput()
         {
-
+            if (string.IsNullOrWhiteSpace(tbemail.Text) ||
+                string.IsNullOrWhiteSpace(tbpassword.Text))
+            {
+                MessageBox.Show("Email dan password wajib diisi.");
+                return false;
+            }
+            return true;
         }
 
+        private User GetLoginRequest()
+        {
+            return new User
+            {
+                Email = tbemail.Text.Trim(),
+                Password = tbpassword.Text.Trim()
+            };
+        }
+
+        private bool HandleLoginResult(User user)
+        {
+            if (user == null)
+            {
+                MessageBox.Show("Login gagal. Email atau password salah.");
+                return false;
+            }
+
+            UserSession.Instance.SetUser(user);
+            MessageBox.Show($"Login berhasil. Halo {user.Nama}!");
+            return true;
+        }
+
+        private void RedirectAfterLogin(User user)
+        {
+            Form next = new SIPETIK_PBO_A7.View.V_Beranda(user);
+            next.FormClosed += (s, args) => this.Close();
+            this.Hide();
+            next.Show();
+        }
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            // Create a User object with the entered email and password
-            User user = new User
-            {
-                Email = tbemail.Text.Trim(),
-                Password = tbpassword.Text
-            };
+            if (!ValidateLoginInput())
+                return;
 
-            var res = uc.Login(user);
+            var req = GetLoginRequest();
+            var result = uc.Login(req);
 
-            if (res != null)
-            {
-                MessageBox.Show($"login berhasil. halo, {res.Nama}!");
-                //UserSession.Instance.SetUser(res);
-                V_Beranda beranda = new V_Beranda(res);
-                beranda.FormClosed += (s, args) => this.Close();
-                this.Hide();
-                beranda.Show();
-            }
-            else
-            {
-                MessageBox.Show("Login gagal. Silakan periksa email dan password Anda.");
-            }
+            if (!HandleLoginResult(result))
+                return;
+
+            RedirectAfterLogin(result);
         }
 
         private void lblregister_Click(object sender, EventArgs e)
         {
-            V_Register reg = new V_Register();
-            reg.Show();
+            new SIPETIK_PBO_A7.View.V_Register().Show();
             this.Hide();
+        }
+
+        private void V_Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

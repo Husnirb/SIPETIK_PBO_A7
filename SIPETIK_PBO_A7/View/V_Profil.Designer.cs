@@ -33,12 +33,16 @@
             nama2 = new Label();
             id_akun = new Label();
             email = new Label();
-            pictureBox1 = new PictureBox();
+            kliklogout = new PictureBox();
             klikBeranda = new PictureBox();
             klikTiket = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            klikTransaksi = new PictureBox();
+            klikEdit = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)kliklogout).BeginInit();
             ((System.ComponentModel.ISupportInitialize)klikBeranda).BeginInit();
             ((System.ComponentModel.ISupportInitialize)klikTiket).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)klikTransaksi).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)klikEdit).BeginInit();
             SuspendLayout();
             // 
             // nama1
@@ -46,7 +50,7 @@
             nama1.BackColor = Color.Transparent;
             nama1.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             nama1.ForeColor = Color.FromArgb(110, 23, 23);
-            nama1.Location = new Point(592, 307);
+            nama1.Location = new Point(569, 281);
             nama1.Name = "nama1";
             nama1.Size = new Size(150, 46);
             nama1.TabIndex = 0;
@@ -57,7 +61,7 @@
             nama2.BackColor = Color.Transparent;
             nama2.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             nama2.ForeColor = Color.FromArgb(246, 175, 175);
-            nama2.Location = new Point(93, 140);
+            nama2.Location = new Point(152, 145);
             nama2.Name = "nama2";
             nama2.Size = new Size(150, 48);
             nama2.TabIndex = 1;
@@ -67,8 +71,8 @@
             // 
             id_akun.BackColor = Color.Transparent;
             id_akun.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            id_akun.ForeColor = SystemColors.ControlText;
-            id_akun.Location = new Point(512, 414);
+            id_akun.ForeColor = Color.DarkRed;
+            id_akun.Location = new Point(526, 400);
             id_akun.Name = "id_akun";
             id_akun.Size = new Size(263, 41);
             id_akun.TabIndex = 2;
@@ -78,23 +82,23 @@
             // 
             email.BackColor = Color.Transparent;
             email.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            email.ForeColor = SystemColors.ControlText;
-            email.Location = new Point(512, 533);
+            email.ForeColor = Color.DarkRed;
+            email.Location = new Point(526, 501);
             email.Name = "email";
             email.Size = new Size(263, 38);
             email.TabIndex = 5;
             email.Text = "email";
             // 
-            // pictureBox1
+            // kliklogout
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.Cursor = Cursors.Hand;
-            pictureBox1.Location = new Point(566, 641);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(144, 42);
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
+            kliklogout.BackColor = Color.Transparent;
+            kliklogout.Cursor = Cursors.Hand;
+            kliklogout.Location = new Point(609, 640);
+            kliklogout.Name = "kliklogout";
+            kliklogout.Size = new Size(123, 48);
+            kliklogout.TabIndex = 6;
+            kliklogout.TabStop = false;
+            kliklogout.Click += kliklogout_Click;
             // 
             // klikBeranda
             // 
@@ -118,6 +122,28 @@
             klikTiket.TabStop = false;
             klikTiket.Click += klikTiket_Click;
             // 
+            // klikTransaksi
+            // 
+            klikTransaksi.BackColor = Color.Transparent;
+            klikTransaksi.Cursor = Cursors.Hand;
+            klikTransaksi.Location = new Point(936, 30);
+            klikTransaksi.Name = "klikTransaksi";
+            klikTransaksi.Size = new Size(138, 51);
+            klikTransaksi.TabIndex = 10;
+            klikTransaksi.TabStop = false;
+            klikTransaksi.Click += klikTransaksi_Click;
+            // 
+            // klikEdit
+            // 
+            klikEdit.BackColor = Color.Transparent;
+            klikEdit.Cursor = Cursors.Hand;
+            klikEdit.Location = new Point(944, 218);
+            klikEdit.Name = "klikEdit";
+            klikEdit.Size = new Size(54, 50);
+            klikEdit.TabIndex = 11;
+            klikEdit.TabStop = false;
+            klikEdit.Click += klikEdit_Click;
+            // 
             // V_Profil
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -125,21 +151,24 @@
             AutoSize = true;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1280, 720);
+            Controls.Add(klikEdit);
+            Controls.Add(klikTransaksi);
             Controls.Add(klikTiket);
             Controls.Add(klikBeranda);
             Controls.Add(email);
             Controls.Add(id_akun);
             Controls.Add(nama1);
-            Controls.Add(pictureBox1);
+            Controls.Add(kliklogout);
             Controls.Add(nama2);
-            Cursor = Cursors.Default;
             Name = "V_Profil";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_Profil";
             Load += V_Profil_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kliklogout).EndInit();
             ((System.ComponentModel.ISupportInitialize)klikBeranda).EndInit();
             ((System.ComponentModel.ISupportInitialize)klikTiket).EndInit();
+            ((System.ComponentModel.ISupportInitialize)klikTransaksi).EndInit();
+            ((System.ComponentModel.ISupportInitialize)klikEdit).EndInit();
             ResumeLayout(false);
         }
 
@@ -149,8 +178,10 @@
         private Label nama2;
         private Label id_akun;
         private Label email;
-        private PictureBox pictureBox1;
+        private PictureBox kliklogout;
         private PictureBox klikBeranda;
         private PictureBox klikTiket;
+        private PictureBox klikTransaksi;
+        private PictureBox klikEdit;
     }
 }

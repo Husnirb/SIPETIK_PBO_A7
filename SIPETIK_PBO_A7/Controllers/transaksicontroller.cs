@@ -1,5 +1,6 @@
 ﻿using Npgsql;
 using SIPETIK_PBO_A7.Database;
+using SIPETIK_PBO_A7.Helper;
 using SIPETIK_PBO_A7.Models;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace SIPETIK_PBO_A7.Controllers
         {
             if (currentTransaksi == null)
             {
-                MessageBox.Show("Tidak ada transaksi yang sedang berjalan.");
+                MessageBox.Show("Tidak ada transaksi.");
                 return false;
             }
 
@@ -98,11 +99,13 @@ namespace SIPETIK_PBO_A7.Controllers
                     conn.Open();
 
                     string query = @"
-                        SELECT transaksi_id, status_transaksi, kuantitas, total_harga, 
-                               tanggal_transaksi, tiket_id, user_id
-                        FROM transaksi
-                        WHERE user_id = @uid
-                        ORDER BY tanggal_transaksi DESC
+                        SELECT t.transaksi_id, t.status_transaksi, t.kuantitas, t.total_harga,
+                               t.tanggal_transaksi, t.tiket_id, t.user_id,
+                               u.nama AS nama_user
+                        FROM transaksi t
+                        JOIN users u ON u.user_id = t.user_id
+                        WHERE t.user_id = @uid
+                        ORDER BY t.tanggal_transaksi DESC
                     ";
 
                     using (var cmd = new NpgsqlCommand(query, conn))
@@ -121,7 +124,8 @@ namespace SIPETIK_PBO_A7.Controllers
                                     TotalHarga = reader.GetInt32(reader.GetOrdinal("total_harga")),
                                     TanggalTransaksi = reader.GetDateTime(reader.GetOrdinal("tanggal_transaksi")),
                                     TiketId = reader.GetInt32(reader.GetOrdinal("tiket_id")),
-                                    UserId = reader.GetInt32(reader.GetOrdinal("user_id"))
+                                    UserId = reader.GetInt32(reader.GetOrdinal("user_id")),
+                                    NamaUser = reader.GetString(reader.GetOrdinal("nama_user"))
                                 });
                             }
                         }
@@ -136,6 +140,53 @@ namespace SIPETIK_PBO_A7.Controllers
             return list;
         }
 
+        public List<Transaksi> GetAllTransaksi()
+        {
+            var list = new List<Transaksi>();
+
+            try
+            {
+                using (var conn = new NpgsqlConnection(dbContext.ConnStr))
+                {
+                    conn.Open();
+
+                    string query = @"
+                        SELECT t.transaksi_id, t.status_transaksi, t.kuantitas, t.total_harga,
+                               t.tanggal_transaksi, t.tiket_id, t.user_id,
+                               u.nama AS nama_user
+                        FROM transaksi t
+                        JOIN users u ON u.user_id = t.user_id
+                        ORDER BY t.tanggal_transaksi DESC
+                    ";
+
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new Transaksi
+                            {
+                                TransaksiId = reader.GetInt32(reader.GetOrdinal("transaksi_id")),
+                                StatusTransaksi = reader.GetString(reader.GetOrdinal("status_transaksi")),
+                                Kuantitas = reader.GetInt32(reader.GetOrdinal("kuantitas")),
+                                TotalHarga = reader.GetInt32(reader.GetOrdinal("total_harga")),
+                                TanggalTransaksi = reader.GetDateTime(reader.GetOrdinal("tanggal_transaksi")),
+                                TiketId = reader.GetInt32(reader.GetOrdinal("tiket_id")),
+                                UserId = reader.GetInt32(reader.GetOrdinal("user_id")),
+                                NamaUser = reader.GetString(reader.GetOrdinal("nama_user"))
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"GET ALL TRANSAKSI ERROR: {ex.Message}");
+            }
+
+            return list;
+        }
+
         public bool UpdateStatusTransaksi(int transaksiId, string status)
         {
             try
@@ -145,7 +196,7 @@ namespace SIPETIK_PBO_A7.Controllers
                     conn.Open();
 
                     string query = @"
-                        UPDATE transaksi 
+                        UPDATE transaksi
                         SET status_transaksi = CAST(@status AS public.status_transaksi_enum)
                         WHERE transaksi_id = @tid
                     ";

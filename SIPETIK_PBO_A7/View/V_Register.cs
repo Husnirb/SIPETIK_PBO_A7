@@ -1,17 +1,7 @@
-﻿using Npgsql;
-using SIPETIK_PBO_A7.Controllers;
-using SIPETIK_PBO_A7.Database;
-using SIPETIK_PBO_A7.Helper;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using SIPETIK_PBO_A7.Controllers;
 using SIPETIK_PBO_A7.Models;
+using System;
+using System.Windows.Forms;
 
 namespace SIPETIK_PBO_A7.View
 {
@@ -24,27 +14,75 @@ namespace SIPETIK_PBO_A7.View
             InitializeComponent();
         }
 
-        private void btndaftar_Click(object sender, EventArgs e)
+        private bool ValidateRegisterInput()
         {
-            var user = new User
+            if (string.IsNullOrWhiteSpace(tbnama.Text))
+            {
+                MessageBox.Show("Nama wajib diisi.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tbemail.Text))
+            {
+                MessageBox.Show("Email wajib diisi.");
+                return false;
+            }
+
+            if (!tbemail.Text.Contains("@"))
+            {
+                MessageBox.Show("Format email tidak valid.");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tbpassword.Text))
+            {
+                MessageBox.Show("Password wajib diisi.");
+                return false;
+            }
+
+            if (tbpassword.Text.Length < 6)
+            {
+                MessageBox.Show("Password minimal 6 karakter.");
+                return false;
+            }
+
+            if (konpassword.Text != tbpassword.Text)
+            {
+                MessageBox.Show("Konfirmasi password tidak cocok.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private User GetRegisterRequest()
+        {
+            return new User
             {
                 Nama = tbnama.Text.Trim(),
                 Email = tbemail.Text.Trim(),
-                Password = tbpassword.Text,
+                Password = tbpassword.Text.Trim(),
+                IsAdmin = false
             };
+        }
 
+        private void btndaftar_Click(object sender, EventArgs e)
+        {
+            if (!ValidateRegisterInput())
+                return;
+
+            var user = GetRegisterRequest();
             bool hasil = uc.Register(user);
 
             if (hasil)
             {
-                MessageBox.Show("register berhasil! silakan login.");
-                V_Login log = new V_Login();
-                log.Show();
+                MessageBox.Show("Registrasi berhasil! Silakan login.");
+                new SIPETIK_PBO_A7.V_Login().Show();
                 this.Hide();
             }
             else
             {
-                MessageBox.Show("Register gagal. Silakan coba lagi.");
+                MessageBox.Show("Registrasi gagal. Email mungkin sudah dipakai.");
             }
         }
     }
