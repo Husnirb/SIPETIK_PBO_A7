@@ -70,22 +70,22 @@
             // id_akun
             // 
             id_akun.BackColor = Color.Transparent;
-            id_akun.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            id_akun.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
             id_akun.ForeColor = Color.DarkRed;
-            id_akun.Location = new Point(526, 400);
+            id_akun.Location = new Point(518, 400);
             id_akun.Name = "id_akun";
-            id_akun.Size = new Size(263, 41);
+            id_akun.Size = new Size(304, 41);
             id_akun.TabIndex = 2;
             id_akun.Text = "idakun";
             // 
             // email
             // 
             email.BackColor = Color.Transparent;
-            email.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            email.Font = new Font("Segoe UI Semibold", 15F, FontStyle.Bold);
             email.ForeColor = Color.DarkRed;
-            email.Location = new Point(526, 501);
+            email.Location = new Point(514, 501);
             email.Name = "email";
-            email.Size = new Size(263, 38);
+            email.Size = new Size(316, 38);
             email.TabIndex = 5;
             email.Text = "email";
             // 

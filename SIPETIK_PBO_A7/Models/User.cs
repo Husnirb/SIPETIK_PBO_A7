@@ -1,17 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIPETIK_PBO_A7.Models
 {
     public class User
     {
-        public int UserId { get; set; }
-        public string Nama { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public bool IsAdmin { get; set; }
+        private int _userId;
+        private string _nama;
+        private string _email;
+        private string _password;
+        private bool _isAdmin;
+
+        public int UserId
+        {
+            get => _userId;
+            set => _userId = value;
+        }
+        public string Nama
+        {
+            get => _nama;
+            set => _nama = value;
+        }
+        public string Email
+        {
+            get => _email;
+            set => _email = value;
+        }
+        public string Password
+        {
+            get => _password;
+            set => _password = value;
+        }
+        public bool IsAdmin
+        {
+            get => _isAdmin;
+            set => _isAdmin = value;
+        }
     }
 }
